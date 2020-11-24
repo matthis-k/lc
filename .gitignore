@@ -7,7 +7,8 @@ gtk-3.0
 jesseduffield
 nordvpn
 procps
+pulse
 spotify-tui
 
-nvim/plugged/
-yay/
+nvim/plugged
+yay
