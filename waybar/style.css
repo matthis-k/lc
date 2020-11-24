@@ -10,7 +10,7 @@ window#waybar {
 
 #workspaces button {
 	padding: 0 2px;
-	color: #fdf6e3;
+	color: #8fbcbb;
 }
 #workspaces button.focused {
 	color: #2e3440;
@@ -21,9 +21,8 @@ window#waybar {
 	text-shadow: inherit;
 }
 #workspaces button:hover {
-	background: #1a1a1a;
-	border: #1a1a1a;
-	padding: 0 3px;
+	background: transparent;
+	border: 1px solid #8fbcbb;
 }
 
 #pulseaud
