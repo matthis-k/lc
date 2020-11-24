@@ -25,7 +25,7 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 gaps inner 0
 gaps outer 0
 
-output "*" bg ~/Pictures/wall.png fill
+output "*" bg ~/.config/wall.png fill
 output HDMI-A-I {
     pos 0 0
     res 2560x1440
