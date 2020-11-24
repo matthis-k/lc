@@ -1,31 +1,27 @@
 # set up connection
 nmtui
-sudo pacman -Syu
-sudo pacman -S binutils fakeroot make gcc cmake
-# cat /etc/vconsole.conf 
-# loadkeys -C de-latin1
 
-mkdir .config
+# update
+sudo pacman -Syu
+loadkeys -C de-latin1
+
 sudo pacman -S git
 
 git config --global user.email "matthis.kaelble@gmail.com"
 git config --global user.name "Matthis Kälble"
 
-sudo pacman -S man
-sudo pacman -S man-db
-
-echo "MOZ_ENABLE_WAYLAND=1" > tmp
-cat /etc/environment tmp > /etc/environment
-rm tmp
-
 echo "installing yay"
-sudo pacman -S binutils fakeroot make gcc cmake
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
+cd ..
+rm -rf yay
 echo "finished installing yay"
 
-yay -S patch autorecon-git npm libepoxy xorg-util-macros xorg-font-util
+yay -S patch autorecon-git npm rustup
+rustup default nightly
+rustup toolchain add stable
+yay -S bat dust fd ripgrep hyperfine exa procs tokei --noconfirm
 yay -S nerd-fonts-fira-code ttf-font-awesome
 yay -S waybar wofi alacritty spotify-tui nordvpn figlet bitwarden-bin preload firefox neovim neovim-plug lazygit
 systemctl enable nordvpnd
@@ -38,4 +34,8 @@ omf install agnoster
 omf theme agnoster
 set $fish_greeting=
 echo "fish installed sucsessfully"
-git clone https://github.com/matthisk/lc .config
+
+echo "MOZ_ENABLE_WAYLAND=1" > tmp
+cat /etc/environment tmp > tmp2
+sudo mv tmp2 /etc/environment
+rm tmp
