@@ -46,12 +46,12 @@ output HDMI-A-I {
 bindsym print exec grim -g "$(slurp)" - | swappy -f -
 bindsym Shift+print exec grim - | swappy -f -
 
-input "*" xkb_layout "de"
-input "1267:12377:ELAN1300:00_04F3:3059_Touchpad" {
-   dwt enabled
-   tap enabled
-   natural_scroll enabled
-   middle_emulation enabled
+input "*" {
+    xkb_layout "de"
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
 }
 
 ### Key bindings
