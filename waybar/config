@@ -1,16 +1,62 @@
+// -*- mode: json -*-
+
 {
-    "layer": "top",
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
-    "modules-center": ["clock"],
-    "modules-right": ["battery"],
-    "sway/window": {
-        "max-length": 50
-    },
-    "battery": {
-        "format": "{capacity}% {icon}",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "clock": {
-        "format-alt": "{:%a, %d. %b  %H:%M}"
-    }
+	"layer": "top",
+	"position": "top",
+
+	"modules-left": [
+		"sway/workspaces",
+	],
+	"modules-center": [
+		"clock",
+	],
+	"modules-right": [
+		"tray",
+		"pulseaudio",
+		"battery",
+	],
+
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"format": "{name}"
+	},
+
+	"clock": {
+		"format": "{:%d.%m %H:%M}",
+		"tooltip": false
+	},
+
+	"pulseaudio": {
+		"format": "{icon} {volume:2}%",
+		"format-bluetooth": "{icon}  {volume}%",
+		"format-muted": "MUTE",
+		"format-icons": {
+			"headphones": "",
+			"default": [
+				"",
+				""
+			]
+		},
+		"scroll-step": 5,
+		"on-click": "pamixer -t",
+		"on-click-right": "pavucontrol"
+	},
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	"tray": {
+		"icon-size": 20
+	}
 }
