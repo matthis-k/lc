@@ -18,12 +18,13 @@ cd ..
 rm -rf yay
 echo "finished installing yay"
 
-yay -S patch autorecon-git npm rustup
+yay -S patch autorecon-git npm rustup --noconfirn
+yay -S xorg-xserver-xwayland-hidpi-git
 rustup default nightly
 rustup toolchain add stable
 yay -S bat dust fd ripgrep hyperfine exa procs tokei --noconfirm
-yay -S nerd-fonts-fira-code ttf-font-awesome
-yay -S waybar wofi alacritty spotify-tui nordvpn figlet bitwarden-bin preload firefox neovim neovim-plug lazygit
+yay -S nerd-fonts-fira-code ttf-font-awesome --noconfirm
+yay -S waybar wofi alacritty spotify-tui nordvpn figlet bitwarden-bin preload firefox neovim neovim-plug lazygit --noconfirm
 systemctl enable nordvpnd
 systemctl start nordvpnd
 nordvpn set autoconnect enabled
