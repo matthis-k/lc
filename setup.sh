@@ -1,11 +1,7 @@
-# set up connection
-nmtui
+#!/bin/bash
 
 # update
-sudo pacman -Syu
-loadkeys -C de-latin1
-
-sudo pacman -S git
+sudo pacman -Syu --noconfirm
 
 git config --global user.email "matthis.kaelble@gmail.com"
 git config --global user.name "Matthis Kälble"
@@ -18,18 +14,17 @@ cd ..
 rm -rf yay
 echo "finished installing yay"
 
-yay -S patch autorecon-git npm rustup --noconfirn
-yay -S xorg-xserver-xwayland-hidpi-git
+yay -S patch autorecon-git npm rustup --noconfirm
+yay -S xorg-server-xwayland-hidpi-git --force --noconfirm
 rustup default nightly
 rustup toolchain add stable
 yay -S bat dust fd ripgrep hyperfine exa procs tokei --noconfirm
 yay -S nerd-fonts-fira-code ttf-font-awesome --noconfirm
-yay -S waybar wofi alacritty spotify-tui nordvpn figlet bitwarden-bin preload firefox neovim neovim-plug lazygit --noconfirm
-systemctl enable nordvpnd
-systemctl start nordvpnd
-nordvpn set autoconnect enabled
+yay -S wlogout-git waybar wofi alacritty spotify-tui nordvpn figlet bitwarden-bin preload firefox neovim neovim-plug lazygit --noconfirm
+sudo systemctl enable nordvpnd
+sudo systemctl start nordvpnd
 
-echo "installing fish"
+echo "installing oh-my-fish"
 curl -L https://get.oh-my.fish | fish
 omf install agnoster
 omf theme agnoster

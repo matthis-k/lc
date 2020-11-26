@@ -66,6 +66,8 @@ bindsym ctrl+alt+w exec firefox
 bindsym ctrl+alt+p exec bitwarden
 bindsym ctrl+alt+t exec $term
 bindsym ctrl+alt+a exec $menu
+bindsym $mod+x exec wlogout
+
 
     bindsym $mod+q kill
     bindsym $mod+Space exec $menu
