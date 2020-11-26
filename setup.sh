@@ -19,8 +19,12 @@ yay -S xorg-server-xwayland-hidpi-git --force --noconfirm
 rustup default nightly
 rustup toolchain add stable
 yay -S bat dust fd ripgrep hyperfine exa procs tokei --noconfirm
-yay -S nerd-fonts-fira-code ttf-font-awesome --noconfirm
+yay -S nerd-fonts-fira-code ttf-font-awesome nordic-theme-git --noconfirm
 yay -S wlogout-git waybar wofi alacritty spotify-tui nordvpn figlet bitwarden-bin preload firefox neovim neovim-plug lazygit --noconfirm
+
+gsettings set org.gnome.desktop.interface gtk-theme Nordic
+gsettings set org.gnome.desktop.wm.preferences theme Nordic
+
 sudo systemctl enable nordvpnd
 sudo systemctl start nordvpnd
 
