@@ -14,7 +14,11 @@ window#waybar {
 }
 #workspaces button.focused {
 	color: #2e3440;
-    background: #8fbcbb
+    background: #8fbcbb;
+}
+#workspaces button.focused:hover {
+	color: #8fbcbb;
+    background: #2e3440;
 }
 #workspaces button:hover {
 	box-shadow: inherit;
