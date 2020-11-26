@@ -23,3 +23,6 @@ alias 'l.'='ls -A | grep "^\."'
 alias 'mkd'='mkdir'
 alias 'rmd'='rm -rf'
 #alias 'yay -Syu'='yay -Syu --noconfirm'
+
+#omf theme agnoster
+#test "$TERM" = "linux" && omf theme chain

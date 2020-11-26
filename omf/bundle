@@ -1,2 +1,4 @@
+package vcs
 theme agnoster
+theme chain
 theme default
