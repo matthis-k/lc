@@ -22,6 +22,8 @@ alias 'la'='ls -a'
 alias 'l.'='ls -A | grep "^\."'
 alias 'mkd'='mkdir'
 alias 'rmd'='rm -rf'
+alias 'cp'='cp -v'
+alias 'mv'='mv -v'
 #alias 'yay -Syu'='yay -Syu --noconfirm'
 
 #omf theme agnoster

@@ -10,6 +10,12 @@ procps
 pulse
 spotify-tui
 inkscape
+GIMP
+spotify
+Thunar
+gtk-2.0
+pipewire-media-session
+xfce4
 
 nvim/plugged
 yay

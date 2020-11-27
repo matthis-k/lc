@@ -21,12 +21,13 @@ if [ $1 = '-p' ] || [ $2 = '-p' ] || [ $# = 0 ]; then
     rustup toolchain add stable
 
     echo installing a lot of apps...
-    yay -S patch autorecon-git npm rustup --noconfirm
+    yay -S nodejs patch autorecon-git npm rustup --noconfirm
     yay -R xorg-server xorg-server-common --noconfirm
     yay -S xorg-server-xwayland-hidpi-git --noconfirm
     yay -S bat dust fd ripgrep hyperfine exa procs tokei --noconfirm
     yay -S nerd-fonts-fira-code ttf-font-awesome nordic-theme-git --noconfirm
-    yay -S greetd-git greetd-gtkgreet-git wlogout-git waybar wofi alacritty spotify-tui nordvpn figlet bitwarden-bin preload firefox neovim neovim-plug lazygit --noconfirm
+    yay -S sway greetd-git greetd-gtkgreet-git wlogout-git waybar wofi alacritty  --noconfirm
+    yay -S spotify-tui nordvpn figlet bitwarden-bin preload firefox neovim neovim-plug lazygit zathura zathura-pdf-poppler --noconfirm
 
     #echo installing oh-my-fish...
     #curl -L https://get.oh-my.fish | fish
