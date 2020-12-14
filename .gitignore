@@ -1,23 +1,2 @@
-Bitwarden
-Bitwarden CLI
-coc
-configstore
-dconf
-gtk-3.0
-jesseduffield
-nordvpn
-procps
-pulse
-spotify-tui
-inkscape
-GIMP
-spotify
-Thunar
-gtk-2.0
-pipewire-media-session
-xfce4
-
-nvim/plugged
-yay
-
-pavucontrol.ini
+.config/nvim/plugged
+.config/nvim/.netrwhist
