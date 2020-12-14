@@ -22,7 +22,7 @@
 	},
 
 	"clock": {
-		"format": "{:%d.%m %H:%M}",
+		"format": "{: DATE: %d.%m TIME: %H:%M}",
 		"tooltip": false
 	},
 

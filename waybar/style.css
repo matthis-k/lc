@@ -5,19 +5,19 @@
 
 window#waybar {
 	background: transparent;
-	color: #8fbcbb;
+	color: #5e81ac;
 }
 
 #workspaces button {
 	padding: 0 2px;
-	color: #8fbcbb;
+	color: #5e81ac;
 }
 #workspaces button.focused {
 	color: #2e3440;
-    background: #8fbcbb;
+    background: #5e81ac;
 }
 #workspaces button.focused:hover {
-	color: #8fbcbb;
+	color: #5e81ac;
     background: #2e3440;
 }
 #workspaces button:hover {
@@ -26,10 +26,9 @@ window#waybar {
 }
 #workspaces button:hover {
 	background: transparent;
-	border: 1px solid #8fbcbb;
+	border: 1px solid #5e81ac;
 }
 
-#pulseaud
 #clock,
 #pulseaudio,
 #battery {

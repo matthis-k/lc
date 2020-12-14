@@ -26,5 +26,4 @@ alias 'cp'='cp -v'
 alias 'mv'='mv -v'
 #alias 'yay -Syu'='yay -Syu --noconfirm'
 
-#omf theme agnoster
-#test "$TERM" = "linux" && omf theme chain
+#test "$TERM" != "linux" && starship init fish | source

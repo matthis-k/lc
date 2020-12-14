@@ -12,7 +12,7 @@ set $menu wofi --show drun
 default_border pixel 3
 
 # Font
-font pango:ProductSansMedium 13px 
+#font pango:Fira Code Nerf Font 13px 
 
 # Window decoration
 # class                 border  backgr. text    indicator child_border
@@ -45,6 +45,7 @@ output HDMI-A-I {
 # Screenshot with grim and swappy
 bindsym print exec grim -g "$(slurp)" - | swappy -f -
 bindsym Shift+print exec grim - | swappy -f -
+bindsym ctrl+Shift+print exec grim "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | slurp)" | swappy -f
 
 input "type:keyboard" {
     xkb_layout "de"

@@ -5,6 +5,6 @@ nnoremap <leader>t :FloatermToggle<cr>
 
 " use <c-space>for trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
-nmap <c-b> :NERDTreeToggle<cr>
-imap <c-b> <esc><esc>:NERDTreeToggle<cr><a>
-:tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc> <C-\><C-n>
+inoremap <silent> <c-e>  <Esc>:CocCommand explorer<cr>
+nnoremap <silent> <c-e>  <Esc>:CocCommand explorer<cr>

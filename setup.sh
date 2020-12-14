@@ -21,7 +21,7 @@ if [ $1 = '-p' ] || [ $2 = '-p' ] || [ $# = 0 ]; then
     rustup toolchain add stable
 
     echo installing a lot of apps...
-    yay -S nodejs patch autorecon-git npm rustup --noconfirm
+    yay -S nodejs patch autorecon-git npm --noconfirm
     yay -R xorg-server xorg-server-common --noconfirm
     yay -S xorg-server-xwayland-hidpi-git --noconfirm
     yay -S bat dust fd ripgrep hyperfine exa procs tokei --noconfirm
@@ -54,10 +54,7 @@ if [ $1 = '-c' ] || [ $2 = '-c' ] || [ $# = 0 ]; then
 
     if [ -z $(cat /etc/environment | grep "MOZ_ENABLE_WAYLAND=1") ]; then
         echo enable firefox wayland
-        echo "MOZ_ENABLE_WAYLAND=1" > tmp
-        cat /etc/environment tmp > tmp2
-        sudo mv tmp2 /etc/environment
-        rm tmp
+        echo "MOZ_ENABLE_WAYLAND=1" >> /etc/environment
     fi
 
     echo setting up greetd...

@@ -7,7 +7,7 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
-set rnu
+set nu rnu
 set nowrap
 set smartcase
 set noswapfile
@@ -18,5 +18,3 @@ set incsearch
 
 set colorcolumn=120
 highlight ColorColumn ctermbg=0 guibg=lightgrey
-
-:colorscheme nord
