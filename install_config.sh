@@ -5,7 +5,7 @@
 echo "your current config will be lost! confirm? (y/n)"
 read confirm
 if ! [ "$confirm" == "y" ]; then
-    exit 1
+    exit 0
 fi
 unset 'confirm'
 
@@ -21,7 +21,7 @@ done
 echo "do you want to run the post configuration script? (y/n)"
 read confirm
 if ! [ "$confirm" == "y" ]; then
-    exit 1
+    exit 0
 fi
 unset 'confirm'
 
