@@ -1,60 +1,42 @@
 #!/bin/bash
 
-rm -rf config etc
-location=$(pwd)
+rm -rf home root
 
-echo creating folder structure
-# get all folders/files, get only those in included, remove those in excluded
-folders=$(
-    cd ~/.config
-    included_formatted=$(sed ':a;N;$!ba;s/\n/|/g' $location/included)
-    excluded_formatted=$(sed ':a;N;$!ba;s/\n/|/g' $location/excluded)
-    echo "$(fd -td | rg $included_formatted | rg -v $excluded_formatted)"
-)
-files=$(
-    cd ~/.config
-    included_formatted=$(sed ':a;N;$!ba;s/\n/|/g' $location/included)
-    excluded_formatted=$(sed ':a;N;$!ba;s/\n/|/g' $location/excluded)
-    # if you want to include all files in ~/.config uncomment this line and comment the other echo
-    #echo "$(fd -tf | rg $included_formatted | rg -v $excluded_formatted) $(fd -tf | rg -v /)"
-    echo "$(fd -tf | rg $included_formatted | rg -v $excluded_formatted)"
-)
+echo "getting included folders and files"
+dirs=()
 
-for dir in $folders
-do
-    mkdir -p config/$dir
+
+for include in $(sed "s#~#$HOME#g;" included); do 
+    if [ -d $include ]; then
+        dirs+=" $include"
+        dirs+=" $(fd --base-directory "$include" -td -a -H)"
+    elif [ -f $include ]; then
+        files+="$include"
+    fi
 done
 
-echo copying files from ~/.config
-for file in $files 
-do 
-    cp ~/.config/$file config/$file
+echo "copying folders and files"
+for dir in $dirs; do
+    if [[ "$dir" == $HOME* ]]; then
+        new_dir="home${dir#$HOME}"
+    else
+        new_dir="root${dir}"
+    fi
+
+    mkdir -p $new_dir
+    for file in $(fd -tf -d 1 -a -H --base-directory $dir); do
+        cp $file "$new_dir/"
+    done
 done
 
-folders=$(
-    cd /etc
-    included_formatted=$(sed ':a;N;$!ba;s/\n/|/g' $location/included)
-    excluded_formatted=$(sed ':a;N;$!ba;s/\n/|/g' $location/excluded)
-    echo "$(fd -td | rg $included_formatted | rg -v $excluded_formatted)"
-)
-
-files=$(
-    cd /etc
-    included_formatted=$(sed ':a;N;$!ba;s/\n/|/g' $location/included)
-    excluded_formatted=$(sed ':a;N;$!ba;s/\n/|/g' $location/excluded)
-    echo "$(fd -tf -a | rg $included_formatted | rg -v $excluded_formatted)"
-)
-
-for dir in $folders
-do
-    echo $folders
-    mkdir -p etc/$dir
-done
-echo
-echo
-echo copying files from /etc/
-for file in $files 
-do 
-    echo $file
-    #cp /etc/$file etc/$file
+echo "adding extra files"
+for file in $files; do
+    if [[ "$file" == $HOME* ]]; then
+        file_dest="home${file#$HOME}"
+    else
+        file_dest="root${file}"
+    fi
+    mkdir -p $file_dest
+    rmdir $file_dest
+    cp $file $file_dest
 done

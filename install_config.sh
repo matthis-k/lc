@@ -1,28 +1,29 @@
 #!/bin/bash
 
-echo backing up current config
-mv -v ~/.config ~/.config_backup
-echo set up new config
-cp -r .config ~
+./before_config_install.sh
 
-echo copying to /etc/...
-for dir in $(ls etc)
-do
-    if [ -z "$(ls /etc/$dir)" ]; then
-        sudo mv -v /etc/$dir /etc/$dir.backup
-    fi
-    sudo cp -r -v etc/$dir /etc/$dir
+echo "your current config will be lost! confirm? (y/n)"
+read confirm
+if ! [ "$confirm" == "y" ]; then
+    exit 1
+fi
+unset 'confirm'
+
+echo copying...
+for src in $(fd --base-directory home -d 1 -Ha); do
+    cp -r $src $HOME
 done
 
-echo setting up mozilla wayland
-if [ -z "$(cat /etc/environment | grep 'MOZILLA_ENABLE_FIREFOX=1')" ]; then
-    sudo echo "MOZILLA_ENABLE_FIREFOX=1" >> /etc/environment
+for src in $(fd --base-directory root -d 1 -Ha); do
+    sudo cp -r $src /
+done
+
+echo "do you want to run the post configuration script? (y/n)"
+read confirm
+if ! [ "$confirm" == "y" ]; then
+    exit 1
 fi
+unset 'confirm'
 
-echo enable nodic gtc theme
-gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
-gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
 
-echo enable nordvpn autoconnect
-nordvpn set autoconnect enabled
-
+./after_config_install.sh
