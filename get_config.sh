@@ -11,7 +11,7 @@ for include in $(sed "s#~#$HOME#g;" included); do
         dirs+=" $include"
         dirs+=" $(fd --base-directory "$include" -td -a -H)"
     elif [ -f $include ]; then
-        files+="$include"
+        files+=" $include"
     fi
 done
 

@@ -5,14 +5,17 @@ set $down j
 set $up k
 set $right l
 
-set $term alacritty
+### Applications
+set $terminal alacritty
 set $menu wofi --show drun
+set $browser firefox
+set $editor alacritty -e nvim
 
 # Disable titlebar
 default_border pixel 3
 
 # Font
-#font pango:Fira Code Nerf Font 13px 
+font pango:Fira Code Nerf Font 13px 
 
 # Window decoration
 # class                 border  backgr. text    indicator child_border
@@ -22,30 +25,14 @@ client.unfocused        #4c566a #4c566a #888888 #ebcb8b   #434c5e
 client.urgent           #7c818c #bf616a #ffffff #900000   #bf616a
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
-gaps inner 0
-gaps outer 0
-
+# set wallpaper
 output "*" bg ~/.config/wall.png fill
 output HDMI-A-I {
     pos 0 0
-    res 2560x1440
+    res 1920x1080
     adaptive_sync off
     scale 1
 }
-
-# exec swayidle -w\
-#     timeout 1070 'swaylock -f -C ~/.config/swaylock/config'\
-#     timeout 770 'swaymsg "output * dpms off"' \
-#     resume 'swaymsg "output * dpms on"' \
-#     before-sleep 'swaylock -C ~/.config/swaylock/config'
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
-# Screenshot with grim and swappy
-bindsym print exec grim -g "$(slurp)" - | swappy -f -
-bindsym Shift+print exec grim - | swappy -f -
-bindsym ctrl+Shift+print exec grim "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | slurp)" | swappy -f
 
 input "type:keyboard" {
     xkb_layout "de"
@@ -57,15 +44,54 @@ input "type:touchpad" {
     middle_emulation enabled
 }
 
+# Screenshot with grim and swappy
+bindsym print exec grim -g "$(slurp)" - | swappy -f -
+bindsym Shift+print exec grim - | swappy -f -
+bindsym ctrl+Shift+print exec grim "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | slurp)" - | swappy -f -
+
+#modes: normal, apps, resize, scerenshot, 
+set $mode_launcher Launch: [b]rowser [t]erminal [m]ail [e]ditor
+bindsym $mod+a mode "$mode_launcher"
+mode "$mode_launcher" {
+    bindsym b exec $browser; mode "default"
+    bindsym t exec $terminal; mode "default"
+    bindsym m exec $mail; mode "default"
+    bindsym e exec $editor; mode "default"
+    
+    bindsym Escape mode "default"
+}
+
+set $mode_resize Resize: use hjkl to rezize
+bindsym $mod+r mode "$mode_resize"
+mode "$mode_resize" {
+    bindsym $left resize shrink width 20px
+    bindsym $down resize grow height 20px
+    bindsym $up resize shrink height 20px
+    bindsym $right resize grow width 20px
+
+    bindsym Escape mode "default"
+}
+
+set $mode_screenshot Screenshot: [f]ullscren [w]indow [r]egion
+bindsym $mod+s mode "$mode_screenshot"
+mode "$mode_screenshot" {
+    bindsym f exec screenshot f; mode "default"
+    bindsym w exec bash; grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)" - | swappy -f -; exit; mode "default"
+    bindsym r exec screenshot r; mode "default"
+    bindsym w exec screenshot w; mode "default"
+
+    bindsym Escape mode "default"
+}
+
 ### Key bindings
 #
 # Basics:
-    bindsym $mod+return exec $term
+    bindsym $mod+return exec $terminal
 
 #applications
 bindsym ctrl+alt+w exec firefox
 bindsym ctrl+alt+p exec bitwarden
-bindsym ctrl+alt+t exec $term
+bindsym ctrl+alt+t exec $terminal
 bindsym ctrl+alt+a exec $menu
 bindsym $mod+x exec wlogout
 
@@ -128,7 +154,7 @@ bindsym $mod+x exec wlogout
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    #bindsym $mod+l layout stacking
     bindsym $mod+Tab layout tabbed
     bindsym $mod+e layout toggle split
 
@@ -140,9 +166,6 @@ bindsym $mod+x exec wlogout
 
     # Swap focus between the tiling area and the floating area
     bindsym shift+space focus mode_toggle
-
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
 
     # Back and Forth
 
@@ -163,10 +186,6 @@ bindsym $mod+x exec wlogout
 #
 # Resizing containers:
 #
-    bindsym $mod+alt+$left resize shrink width 20px
-    bindsym $mod+alt+$up resize grow height 20px
-    bindsym $mod+alt+$down resize shrink height 20px
-    bindsym $mod+alt+$right resize grow width 20px
 
     # Return to default mode
     # bindsym Return mode "default"

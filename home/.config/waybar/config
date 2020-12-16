@@ -6,6 +6,7 @@
 
 	"modules-left": [
 		"sway/workspaces",
+        "sway/mode",
 	],
 	"modules-center": [
 		"clock",

@@ -7,4 +7,5 @@
 ~/.config/wofi
 ~/.config/zathura
 ~/.config/wall.png
+/bin/screenshot
 /etc/greetd
