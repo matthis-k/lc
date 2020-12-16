@@ -9,13 +9,21 @@ if ! [ "$confirm" == "y" ]; then
 fi
 unset 'confirm'
 
-echo copying...
-for src in $(fd --base-directory home -d 1 -Ha); do
-    cp -r $src $HOME
+echo "creating all nesseccary folders"
+for dir in $(fd --base-directory home -td -H); do
+    mkdir -p "a$HOME/$dir"
 done
 
-for src in $(fd --base-directory root -d 1 -Ha); do
-    sudo cp -r $src /
+for dir in $(fd --base-directory root -td -H); do
+    sudo mkdir -p "/$dir"
+done
+
+echo "copying files"
+for file in $(fd -tf -H --base-directory home); do
+    cp "home/$file" "$HOME/$file"
+done
+for file in $(fd -tf -H --base-directory root); do
+    sudo cp "root/$file" "/$file"
 done
 
 echo "do you want to run the post configuration script? (y/n)"
