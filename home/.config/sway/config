@@ -44,11 +44,6 @@ input "type:touchpad" {
     middle_emulation enabled
 }
 
-# Screenshot with grim and swappy
-bindsym print exec grim -g "$(slurp)" - | swappy -f -
-bindsym Shift+print exec grim - | swappy -f -
-bindsym ctrl+Shift+print exec grim "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | slurp)" - | swappy -f -
-
 #modes: normal, apps, resize, scerenshot, 
 set $mode_launcher Launch: [b]rowser [t]erminal [m]ail [e]ditor
 bindsym $mod+a mode "$mode_launcher"
@@ -61,6 +56,27 @@ mode "$mode_launcher" {
     bindsym Escape mode "default"
 }
 
+set $mode_screenshot Screenshot: [f]ullscren [w]indow [r]egion
+bindsym $mod+s mode "$mode_screenshot"
+mode "$mode_screenshot" {
+    bindsym f exec screenshot f; mode "default"
+    bindsym w exec bash; grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)" - | swappy -f -; exit; mode "default"
+    bindsym r exec screenshot r; mode "default"
+
+    bindsym Escape mode "default"
+}
+
+
+set $mode_layout Layout: [1]tiled [2]tabbed [3]stacked
+bindsym $mod+m mode "$mode_layout"
+mode "$mode_layout" {
+    bindsym 1 layout toggle split
+    bindsym 2 layout tabbed
+    bindsym 3 layout stacking
+
+    bindsym Escape mode "default"
+}
+
 set $mode_resize Resize: use hjkl to rezize
 bindsym $mod+r mode "$mode_resize"
 mode "$mode_resize" {
@@ -68,17 +84,6 @@ mode "$mode_resize" {
     bindsym $down resize grow height 20px
     bindsym $up resize shrink height 20px
     bindsym $right resize grow width 20px
-
-    bindsym Escape mode "default"
-}
-
-set $mode_screenshot Screenshot: [f]ullscren [w]indow [r]egion
-bindsym $mod+s mode "$mode_screenshot"
-mode "$mode_screenshot" {
-    bindsym f exec screenshot f; mode "default"
-    bindsym w exec bash; grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)" - | swappy -f -; exit; mode "default"
-    bindsym r exec screenshot r; mode "default"
-    bindsym w exec screenshot w; mode "default"
 
     bindsym Escape mode "default"
 }
