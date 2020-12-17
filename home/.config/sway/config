@@ -44,6 +44,13 @@ input "type:touchpad" {
     middle_emulation enabled
 }
 
+#global bindings
+
+bindsym $mod+$left focus left
+bindsym $mod+$right focus right
+bindsym $mod+$up focus up
+bindsym $mod+$down focus down
+
 #modes: normal, apps, resize, scerenshot, 
 set $mode_launcher Launch: [b]rowser [t]erminal [m]ail [e]ditor
 bindsym $mod+a mode "$mode_launcher"
@@ -56,34 +63,38 @@ mode "$mode_launcher" {
     bindsym Escape mode "default"
 }
 
-set $mode_screenshot Screenshot: [f]ullscren [w]indow [r]egion
-bindsym $mod+s mode "$mode_screenshot"
-mode "$mode_screenshot" {
-    bindsym f exec screenshot f; mode "default"
-    bindsym w exec bash; grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)" - | swappy -f -; exit; mode "default"
-    bindsym r exec screenshot r; mode "default"
-
-    bindsym Escape mode "default"
-}
-
-
-set $mode_layout Layout: [1]tiled [2]tabbed [3]stacked
-bindsym $mod+m mode "$mode_layout"
-mode "$mode_layout" {
-    bindsym 1 layout toggle split
-    bindsym 2 layout tabbed
-    bindsym 3 layout stacking
-
-    bindsym Escape mode "default"
-}
-
-set $mode_resize Resize: use hjkl to rezize
+set $mode_resize Resize: [hjkl]resize
 bindsym $mod+r mode "$mode_resize"
 mode "$mode_resize" {
     bindsym $left resize shrink width 20px
     bindsym $down resize grow height 20px
     bindsym $up resize shrink height 20px
     bindsym $right resize grow width 20px
+
+    bindsym Escape mode "default"
+}
+
+set $mode_layout Layout: [1-3]Layout [hjkl]move
+bindsym $mod+m mode "$mode_layout"
+mode "$mode_layout" {
+    bindsym 1 layout toggle split
+    bindsym 2 layout tabbed
+    bindsym 3 layout stacking
+
+    bindsym $left move left
+    bindsym $down move down
+    bindsym $up move up
+    bindsym $right move right
+
+    bindsym Escape mode "default"
+}
+
+set $mode_screenshot Screenshot: [f]ullscren [w]indow [r]egion
+bindsym $mod+s mode "$mode_screenshot"
+mode "$mode_screenshot" {
+    bindsym f exec screenshot f; mode "default"; 
+    bindsym r exec screenshot r; mode "default"; 
+    bindsym w exec screenshot w; mode "default"; 
 
     bindsym Escape mode "default"
 }
@@ -106,25 +117,6 @@ bindsym $mod+x exec wlogout
     floating_modifier $mod normal
     bindsym $mod+Shift+r reload
     bindsym $mod+Shift+e exec nwgbar -o 0.4
-# Moving around:
-#
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
-
-    # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
-#
 # Workspaces:
 #
     # Switch to workspace
@@ -139,16 +131,16 @@ bindsym $mod+x exec wlogout
     bindsym $mod+9 workspace 9
     bindsym $mod+0 workspace 10
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace 1
-    bindsym $mod+Shift+2 move container to workspace 2
-    bindsym $mod+Shift+3 move container to workspace 3
-    bindsym $mod+Shift+4 move container to workspace 4
-    bindsym $mod+Shift+5 move container to workspace 5
-    bindsym $mod+Shift+6 move container to workspace 6
-    bindsym $mod+Shift+7 move container to workspace 7
-    bindsym $mod+Shift+8 move container to workspace 8
-    bindsym $mod+Shift+9 move container to workspace 9
-    bindsym $mod+Shift+0 move container to workspace 10
+    bindsym $mod+Shift+1 move container to workspace 1; workspace 1
+    bindsym $mod+Shift+2 move container to workspace 2; workspace 2
+    bindsym $mod+Shift+3 move container to workspace 3; workspace 3
+    bindsym $mod+Shift+4 move container to workspace 4; workspace 4
+    bindsym $mod+Shift+5 move container to workspace 5; workspace 5
+    bindsym $mod+Shift+6 move container to workspace 6; workspace 6
+    bindsym $mod+Shift+7 move container to workspace 7; workspace 7
+    bindsym $mod+Shift+8 move container to workspace 8; workspace 8
+    bindsym $mod+Shift+9 move container to workspace 9; workspace 9
+    bindsym $mod+Shift+0 move container to workspace 10; workspace 10
     # Switch to next/previous workspace
     bindsym ctrl+Alt+$right workspace next_on_output
     bindsym ctrl+Alt+$left workspace prev_on_output
@@ -158,10 +150,6 @@ bindsym $mod+x exec wlogout
     bindsym $mod+b splith
     bindsym $mod+v splitv
 
-    # Switch the current container between different layout styles
-    #bindsym $mod+l layout stacking
-    bindsym $mod+Tab layout tabbed
-    bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen

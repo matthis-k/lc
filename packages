@@ -6,6 +6,7 @@ rustup
 alacritty
 bat
 bitwarden-bin
+blueberry
 dust
 exa
 fd
@@ -14,6 +15,7 @@ figlet
 firefox
 greetd-git
 greetd-gtkgreet-git
+grim
 hyperfine
 lazygit
 neovim
@@ -26,7 +28,9 @@ preload
 procs
 python-pynvim-git
 ripgrep
+slurp
 spotify-tui
+swappy
 sway
 tokei
 ttf-font-awesome
