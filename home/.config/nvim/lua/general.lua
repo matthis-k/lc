@@ -24,3 +24,7 @@ vim.o.showmode = false
 
 vim.wo.linebreak = true
 vim.wo.breakindent = true
+
+vim.cmd('filetype off')
+vim.cmd('filetype plugin on')
+vim.cmd('filetype indent on')

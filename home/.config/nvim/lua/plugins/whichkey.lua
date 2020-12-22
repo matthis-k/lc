@@ -1,4 +1,3 @@
-
 vim.call('which_key#register', '<space>', 'g:which_key_space')
 
 vim.g.which_key_space = {
@@ -10,6 +9,7 @@ vim.g.which_key_space = {
             ['name'] = 'goto',
             ['d'] = 'definition',
             ['i'] = 'implementation',
+            ['f'] = 'declaration'
         },
         ['h'] = 'hover',
         ['r'] = 'rename',
@@ -18,11 +18,18 @@ vim.g.which_key_space = {
     ['o'] = {
         ['name'] = 'options'
     },
+    ['f'] = 'file explorer',
     ['t'] = {
         ['name'] = 'terminal',
         ['t'] = 'toggle',
-        ['c'] = 'close',
-        ['n'] = 'new'
+        ['q'] = 'close',
+        ['f'] = 'first',
+        ['n'] = 'next',
+        ['p'] = 'previous',
+        ['l'] = 'last',
+        ['c'] = 'new'
     }
 }
 
+-- this fixes the wrong arrow display (bg and fg swapped)
+vim.cmd('autocmd FileType which_key highlight WhichKeySeperator ctermbg=0 guibg=#434C5E  ctermfg=10 guifg=#A3BE8C')
