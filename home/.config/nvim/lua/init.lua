@@ -1,0 +1,5 @@
+require'plugins'
+require'general'
+require'theme'
+require'lsp'
+require'keys'

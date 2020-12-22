@@ -1,0 +1,18 @@
+<leader> = <space>
+<leader>l -> language server
+	e -> run (execute)
+	gd -> goto definition
+	gi -> goto implementation
+	r -> rename
+	b -> build
+	f -> format
+	d -> debug
+<leader>t -> toggles
+	t -> terminal
+	f -> filetree
+<leader>f -> floaterm
+	c -> create
+	d -> delete
+	n -> next
+	p -> previous
+

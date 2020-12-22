@@ -4,6 +4,7 @@ patch
 rustup
 
 alacritty
+bash-language-server
 bat
 bitwarden-bin
 blueberry
@@ -19,7 +20,6 @@ grim
 hyperfine
 lazygit
 neovim
-neovim-plug
 nerd-fonts-fira-code
 nordic-theme-git
 nordvpn
@@ -28,12 +28,16 @@ preload
 procs
 python-pynvim-git
 ripgrep
+rust-analyzer
+server-bin yaml-language-server
 slurp
 spotify-tui
 swappy
 sway
 tokei
 ttf-font-awesome
+vscode-css-languageserver-bin
+vscode-json-language
 waybar
 wlogout-git
 wofi
