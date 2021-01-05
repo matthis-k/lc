@@ -37,6 +37,6 @@ ttf-font-awesome
 waybar
 wlogout-git
 wofi
-xorg-server-xwayland-hidpi-git
+xorg-server-xwayland-git
 zathura
 zathura-pdf-poppler
