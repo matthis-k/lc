@@ -51,17 +51,7 @@ bindsym $mod+$right focus right
 bindsym $mod+$up focus up
 bindsym $mod+$down focus down
 
-#modes: normal, apps, resize, scerenshot, 
-set $mode_launcher Launch: [b]rowser [t]erminal [m]ail [e]ditor
-bindsym $mod+a mode "$mode_launcher"
-mode "$mode_launcher" {
-    bindsym b exec $browser; mode "default"
-    bindsym t exec $terminal; mode "default"
-    bindsym m exec $mail; mode "default"
-    bindsym e exec $editor; mode "default"
-    
-    bindsym Escape mode "default"
-}
+#modes: normal, resize, scerenshot, 
 
 set $mode_resize Resize: [hjkl]resize
 bindsym $mod+r mode "$mode_resize"
@@ -70,6 +60,10 @@ mode "$mode_resize" {
     bindsym $down resize grow height 20px
     bindsym $up resize shrink height 20px
     bindsym $right resize grow width 20px
+    bindsym $mod+$left focus left
+    bindsym $mod+$right focus right
+    bindsym $mod+$up focus up
+    bindsym $mod+$down focus down
 
     bindsym Escape mode "default"
 }
@@ -85,6 +79,10 @@ mode "$mode_layout" {
     bindsym $down move down
     bindsym $up move up
     bindsym $right move right
+    bindsym $mod+$left focus left
+    bindsym $mod+$right focus right
+    bindsym $mod+$up focus up
+    bindsym $mod+$down focus down
 
     bindsym Escape mode "default"
 }

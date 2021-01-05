@@ -23,6 +23,8 @@ vim.api.nvim_set_keymap('n', '<leader>tc', ':FloatermNew<cr>', { silent = true }
 
 vim.api.nvim_set_keymap('n', '<leader>f', ':LuaTreeToggle<cr>', { silent = true })
 
+vim.api.nvim_set_keymap('n', '<leader>vr', ':source ~/.config/nvim/init.vim<cr>', { silent = true })
+
 vim.api.nvim_set_keymap('n', 'j', 'gj', { silent = true })
 vim.api.nvim_set_keymap('v', 'j', 'gj', { silent = true })
 vim.api.nvim_set_keymap('n', 'k', 'gk', { silent = true })

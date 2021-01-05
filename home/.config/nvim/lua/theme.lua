@@ -1,4 +1,6 @@
+vim.o.termguicolors = true
 vim.cmd('colorscheme nord')
+vim.cmd('set guifont=Fira\\ hjgCode')
 
 vim.cmd('syntax on')
 
@@ -6,7 +8,6 @@ vim.wo.rnu = true
 vim.wo.nu = true
 vim.wo.cursorline = true
 
-vim.o.termguicolors = true
 
 vim.g.nord_color =  {
     "#2E3440",

@@ -28,6 +28,10 @@ vim.g.which_key_space = {
         ['p'] = 'previous',
         ['l'] = 'last',
         ['c'] = 'new'
+    },
+    ['v'] = {
+        ['name'] = 'vim',
+        ['r'] ='reload'
     }
 }
 
