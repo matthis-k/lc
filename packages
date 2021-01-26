@@ -1,6 +1,8 @@
+base-devel
 nodejs
 npm
 patch
+git
 rustup
 
 alacritty
