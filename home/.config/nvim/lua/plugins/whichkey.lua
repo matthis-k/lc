@@ -13,7 +13,8 @@ vim.g.which_key_space = {
         },
         ['h'] = 'hover',
         ['r'] = 'rename',
-        ['f'] = 'format'
+        ['f'] = 'format',
+        ['i'] = 'inlay hints'
     },
     ['o'] = {
         ['name'] = 'options'

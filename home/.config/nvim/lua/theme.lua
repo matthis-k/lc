@@ -1,4 +1,3 @@
-vim.o.termguicolors = true
 vim.cmd('colorscheme nord')
 vim.cmd('set guifont=Fira\\ hjgCode')
 
