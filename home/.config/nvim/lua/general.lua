@@ -22,6 +22,7 @@ vim.o.tabstop = 4
 vim.o.undofile = true
 -- other global options
 vim.o.showmode = false
+vim.o.termguicolors = true
 
 vim.wo.linebreak = true
 vim.wo.breakindent = true

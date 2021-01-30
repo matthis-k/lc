@@ -9,3 +9,4 @@ require'lspconfig'.rust_analyzer.setup{
 }
 require'lspconfig'.yamlls.setup{ on_attach = require('completion').on_attach }
 require'lspconfig'.sumneko_lua.setup({ settings = { Lua = { diagnostics = { globals = { 'vim' } } } }, on_attach = require('completion').on_attach })
+

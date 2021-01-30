@@ -27,8 +27,14 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 # set wallpaper
 output "*" bg ~/.config/wall.png fill
-output HDMI-A-I {
-    pos 0 0
+output DP-I {
+    res 1920x1080
+    pos 0,0
+    adaptive_sync off
+    scale 1
+}
+output HDMI-A-1 {
+    pos 1920,1080
     res 1920x1080
     adaptive_sync off
     scale 1

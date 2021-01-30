@@ -12,6 +12,7 @@ vim.api.nvim_set_keymap('n', '<leader>lgd', ':lua vim.lsp.buf.definition()<cr>',
 vim.api.nvim_set_keymap('n', '<leader>lr', ':lua vim.lsp.buf.rename()<cr>', { silent = true })
 vim.api.nvim_set_keymap('n', '<leader>lf', ':lua vim.lsp.buf.formatting()<cr>', { silent = true })
 vim.api.nvim_set_keymap('n', '<leader>lh', ':lua vim.lsp.buf.hover()<cr>', { silent = true })
+vim.api.nvim_set_keymap('n', '<leader>li', ':lua require\'lsp_extensions\'.inlay_hints()<cr>', { silent = true })
 
 vim.api.nvim_set_keymap('n', '<leader>tt', ':FloatermToggle<cr>', { silent = true })
 vim.api.nvim_set_keymap('n', '<leader>tq', ':FloatermKill<cr>', { silent = true })
@@ -21,7 +22,7 @@ vim.api.nvim_set_keymap('n', '<leader>tp', ':FloatermPrev<cr>', { silent = true 
 vim.api.nvim_set_keymap('n', '<leader>tl', ':FloatermLast<cr>', { silent = true })
 vim.api.nvim_set_keymap('n', '<leader>tc', ':FloatermNew<cr>', { silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>f', ':LuaTreeToggle<cr>', { silent = true })
+vim.api.nvim_set_keymap('n', '<leader>f', ':NvimTreeToggle<cr>', { silent = true })
 
 vim.api.nvim_set_keymap('n', '<leader>vr', ':source ~/.config/nvim/init.vim<cr>', { silent = true })
 
