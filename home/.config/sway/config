@@ -27,18 +27,6 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 # set wallpaper
 output "*" bg ~/.config/wall.png fill
-output DP-I {
-    res 1920x1080
-    pos 0,0
-    adaptive_sync off
-    scale 1
-}
-output HDMI-A-1 {
-    pos 1920,1080
-    res 1920x1080
-    adaptive_sync off
-    scale 1
-}
 
 input "type:keyboard" {
     xkb_layout "de"
@@ -57,7 +45,7 @@ bindsym $mod+$right focus right
 bindsym $mod+$up focus up
 bindsym $mod+$down focus down
 
-#modes: normal, resize, scerenshot, 
+#modes: normal, resize, scerenshot
 
 set $mode_resize Resize: [hjkl]resize
 bindsym $mod+r mode "$mode_resize"
@@ -66,6 +54,7 @@ mode "$mode_resize" {
     bindsym $down resize grow height 20px
     bindsym $up resize shrink height 20px
     bindsym $right resize grow width 20px
+
     bindsym $mod+$left focus left
     bindsym $mod+$right focus right
     bindsym $mod+$up focus up
@@ -117,7 +106,7 @@ bindsym $mod+x exec wlogout
 
 
     bindsym $mod+q kill
-    bindsym $mod+Space exec $menu
+    bindsym $mod+a exec $menu
     floating_modifier $mod normal
     bindsym $mod+Shift+r reload
     bindsym $mod+Shift+e exec nwgbar -o 0.4
@@ -159,7 +148,7 @@ bindsym $mod+x exec wlogout
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym alt+Space floating toggle
+    bindsym $mod+Space floating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym shift+space focus mode_toggle

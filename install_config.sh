@@ -7,7 +7,7 @@ read confirm && [[ $confirm == [Yy] ]] || exit 0 || unset 'confirm'
 
 echo "deleting existing included directories"
 for dir in $(sed 's#~#'$HOME'#g' included); do
-    [ -d $dir ] && rm -rf $dir
+    [ -d $dir ] && sudo rm -rf $dir
 done
 
 echo "setting up home"

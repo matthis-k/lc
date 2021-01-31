@@ -10,8 +10,9 @@ echo enable nodic gtc theme
 gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
 gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
 
-echo enable nordvpn autoconnect
-nordvpn set autoconnect enabled
+echo "modifying spotify rights"
+sudo chmod a+wr /opt/spotify
+sudo chmod a+wr /opt/spotify/Apps -R
 
 echo "set up firefox userChrome.css"
 dest=$(fd -td -a --base-directory ~/.mozilla/firefox/ default-release)
